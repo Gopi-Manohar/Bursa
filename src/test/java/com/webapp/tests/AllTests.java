@@ -31,10 +31,10 @@ import java.util.List;
 import java.util.Map;
 
 public class AllTests  extends BaseTest {
-	
-	
-	
-	
+
+
+
+
 	@Test(groups = { "P1" }, description = "Equity sorting")
 	public void MarketOverview() throws InterruptedException, Exception {
 		TestCaseClass.equityPriceSorting(driver);
@@ -46,12 +46,21 @@ public class AllTests  extends BaseTest {
 		TestCaseClass.registrationValidation(driver,displayName,email,password);
 	}
 
-	
+
+	@Test
+	public void RegistrationModule_FB() throws InterruptedException, IOException 
+	{
+		TestConfiguration config = new TestConfiguration();
+		Injector injector = Guice.createInjector(config);
+		TestImpl test = injector.getInstance(TestImpl.class);
+		TestCaseClass.registrationValidationfb(driver,test.email,test.pwd);
+	}
 
 
- 
-   
-	
 
-	
+
+
+
+
+
 }

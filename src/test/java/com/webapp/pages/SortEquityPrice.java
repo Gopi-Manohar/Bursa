@@ -96,6 +96,8 @@ public class SortEquityPrice
 
 				}
 			}
+			
+			System.out.println("Code"+" "+" | "+"Name"+" "+" | "+"Change"+" "+" | "+"Vol('00)");
 
 			for (Entry<Integer, Double> entry2: hm2.entrySet())
 			{

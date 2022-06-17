@@ -24,6 +24,8 @@ public class RegistrationPage {
 
 
 
+
+	
 	// Method to enter the user Data using DataProvider
 	public static boolean loginValidation(String displayName, String email,String password) {
 		boolean login = false;
@@ -42,6 +44,37 @@ public class RegistrationPage {
 		return login;
 	}
 
-	
+	// Method to enter the user Data using DataProvider
+	public static boolean loginValidationFB( String email,String password) {
+		boolean login = false;
+		try {
+
+			CommonDef.click(registerTabBy);
+			String currentWindow=CommonDef.getCurrentDriver().getWindowHandle();
+			CommonDef.click(faceBookTabBy);
+
+			Set<String> windows=CommonDef.getCurrentDriver().getWindowHandles();
+
+			for(String window:windows)
+			{
+				if(!window.equals(currentWindow))
+				{
+					CommonDef.getCurrentDriver().switchTo().window(window);
+				}
+			}
+
+			if(!FacebookLoginPage.loginFB(email, password)) {
+				Assert.assertTrue(true);
+			}
+			CommonDef.getCurrentDriver().switchTo().window(currentWindow);
+
+			login= true;
+
+		} catch (Exception e) {
+			CommonDef.logs(e.getMessage());
+		}
+		return login;
+	}
+
 
 }
